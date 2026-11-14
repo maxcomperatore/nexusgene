@@ -75,7 +75,7 @@ flowchart LR
     LNP["ApoE-Targeted LNP"] -->|"Endocytosis"| Hep["Hepatocyte Cytoplasm"]
     Hep -->|"Endosomal Release"| Core["dCas12a + crRNA + Deaminase"]
     Core -->|"Unwinds Target DNA"| Loop["R-Loop Target Opening"]
-    Loop -->|"Direct Deamination"| Edit["Single C-to-T Splice Transition"]
+    Loop -->|"Direct Deamination"| Edit["Template C-to-T Edit (GT -> AT Splice Loss)"]
     Edit -->|"Permanent Silencing"| Cure["Halt Amyloid Fibril Synthesis (>95% Serum Depletion)"]
 
     style LNP fill:#1e293b,stroke:#64748b,color:#fff
@@ -84,7 +84,7 @@ flowchart LR
     style Cure fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff
 ```
 
-* **Splice-Site Inactivation**: NEXUS-880 converts a single splice-donor cytosine to thymine (`C•G to T•A`), resulting in exon skipping and degradation of mutant transcripts via nonsense-mediated decay without cutting the genomic backbone.
+* **Splice-Donor Inactivation Chemistry**: Canonical intron-exon splice donors begin with the invariant dinucleotide `GT` on the coding strand (paired to `CA` on the non-coding template strand). NEXUS-880's cytosine base editor deaminates the **template-strand Cytosine (`C•G to T•A`)**, converting the coding strand's canonical **`GT` splice donor into `AT`**. This abolishes recognition by the U1 snRNP spliceosomal machinery, resulting in targeted exon skipping and complete degradation of mutant transcripts via nonsense-mediated decay without cleaving the DNA backbone.
 
 ---
 
@@ -134,13 +134,14 @@ graph TD
 
 ## 7. Structural Biology: Engineered Cas12a PAM Complex (PDB: 5XUS)
 
-The structural engine of NEXUS-880 is based on the Cryo-EM structure of the **engineered Cas12a / crRNA genomic complex** ([PDB: 5XUS](https://www.rcsb.org/structure/5XUS)):
+The structural engine of NEXUS-880 is based on the **high-resolution X-ray crystal structure (2.50 Å)** of the *Lachnospiraceae bacterium* Cas12a / crRNA genomic complex ([PDB: 5XUS](https://www.rcsb.org/structure/5XUS)):
 
 <div align="center">
-  <img src="cas12a_crispr_architecture.png" width="85%" alt="Cryo-EM 3D Cas12a Architecture" />
+  <img src="cas12a_crispr_architecture.png" width="85%" alt="X-ray Crystal 3D Cas12a Architecture (2.50 Å)" />
 </div>
 
 * **Engineered PAM-Interacting Domain**: Modified PAM-interacting residues expand recognition beyond standard `TTTV` motifs, enabling unrestricted access to the canonical splice-junction sites of human *TTR*.
+* **Steric R-Loop Architecture**: Unwinds the target DNA duplex and positions the non-target single-stranded loop with sub-angstrom accuracy into the catalytic pocket of the tethered deaminase, restricting editing exclusively to the target window.
 
 ---
 
@@ -162,7 +163,7 @@ nexusgene/
 ├── README.md                           # Comprehensive genomic data room & TPP
 ├── LICENSE                             # Open-source MIT license
 ├── therapy_profile.json                # Machine-readable therapeutic specifications
-├── 5XUS.cif                            # High-resolution Cas12a Cryo-EM coordinates
+├── 5XUS.cif                            # High-resolution Cas12a X-ray diffraction coordinates (2.50 Å)
 ├── cas12a_crispr_architecture.png      # 3D structural rendering of Cas12a genomic complex
 ├── gene_editing_market_forecast.png    # Commercial market forecast ($85B TAM)
 ├── genomic_fidelity_comparison.png     # On-target editing & translocation comparison
@@ -184,4 +185,4 @@ uv run --with requests --with matplotlib python fetch_ttr_genetics.py
 ---
 
 ## Intellectual Property & Disclaimer
-*This repository and chemical disclosures are published under the open-source [MIT License](LICENSE) for collaborative academic benchmarking and computer-aided drug design research. Quantitative pharmacological models and ADMET projections are derived via in silico molecular mechanics and cheminformatics algorithms.*
+*This repository and genetic medicine disclosures are published under the open-source [MIT License](LICENSE) for collaborative academic benchmarking and computational biology research. Quantitative pharmacological models, nucleic acid sequence targets, guide RNA architectures, and LNP biodistribution projections are derived via in silico molecular modeling and genomic analytics.*
