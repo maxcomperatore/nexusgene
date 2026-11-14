@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexusedit (NEXUS-880) | In Vivo Base-Editing Cas12a-LNP Data Room</title>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Plotly.js & 3Dmol.js (WebGL Structure Viewer) -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              DEFAULT: '#06b6d4'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0b1120; color: #f8fafc; }
+    .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.7); }
+    .glass-card:hover { border-color: rgba(6, 182, 212, 0.5); }
+    .glow-cyan { box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.25); }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-sky-400 flex items-center justify-center font-extrabold text-slate-950 text-xl tracking-tight">N</div>
+        <div>
+          <span class="font-bold text-lg text-white tracking-tight">NexusGene</span>
+          <span class="text-xs ml-2 px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-mono">NEXUS-880 DATA ROOM</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <a href="#overview" class="hover:text-cyan-400 transition">Overview</a>
+        <a href="#market" class="hover:text-cyan-400 transition">Market ($85B)</a>
+        <a href="#mechanism" class="hover:text-cyan-400 transition">Base Editing</a>
+        <a href="#structure" class="hover:text-cyan-400 transition">3D Cas12a</a>
+        <a href="#fidelity" class="hover:text-cyan-400 transition">Genomic Fidelity</a>
+        <a href="#lnp" class="hover:text-cyan-400 transition">LNP Delivery</a>
+      </nav>
+      <div class="flex items-center space-x-3">
+        <a href="https://maxcomperatore.github.io/auranucleix/" target="_blank" class="hidden sm:inline-block text-xs font-semibold px-3 py-1.5 rounded-lg bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 border border-teal-500/30 transition">
+          View Auraglipron (GLP-1)
+        </a>
+        <a href="https://github.com/maxcomperatore/nexusgene" target="_blank" class="flex items-center space-x-2 text-xs font-semibold px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="overview" class="relative pt-16 pb-20 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>Preclinical Genomic Data Room | In Vivo Base Editor</span>
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+            Nexusedit <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400">(NEXUS-880)</span>
+          </h1>
+          <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+            A next-generation <span class="text-cyan-300 font-semibold">in vivo Cas12a base-editing platform</span> delivered via liver-tropic lipid nanoparticles. Engineered to permanently silence mutant <i>TTR</i> amyloidosis with <span class="text-white font-bold">>95% serum protein depletion</span> and zero double-stranded DNA breaks.
+          </p>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+            <div class="glass-card rounded-xl p-4">
+              <span class="text-xs text-slate-400 font-medium">Target Gene</span>
+              <div class="text-xl font-bold text-white mt-1">TTR</div>
+              <span class="text-[10px] text-cyan-400 font-mono">ENSG00000118271</span>
+            </div>
+            <div class="glass-card rounded-xl p-4">
+              <span class="text-xs text-slate-400 font-medium">On-Target Edit</span>
+              <div class="text-xl font-bold text-cyan-400 mt-1">> 90%</div>
+              <span class="text-[10px] text-slate-400 font-mono">Primary Hepatocytes</span>
+            </div>
+            <div class="glass-card rounded-xl p-4">
+              <span class="text-xs text-slate-400 font-medium">DNA Cleavage</span>
+              <div class="text-xl font-bold text-emerald-400 mt-1">0 Cuts</div>
+              <span class="text-[10px] text-emerald-300 font-mono">No Translocations</span>
+            </div>
+            <div class="glass-card rounded-xl p-4">
+              <span class="text-xs text-slate-400 font-medium">Administration</span>
+              <div class="text-xl font-bold text-sky-400 mt-1">1-Hour IV</div>
+              <span class="text-[10px] text-sky-300 font-mono">Single Curative Dose</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700 glow-cyan">
+            <img src="nexusgene_godtier_packshot.jpg" alt="Nexusedit Packaging Presentation" class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-5">
+              <span class="text-xs font-mono text-cyan-300">FIG. 1 // CRYOGENIC BOROSILICATE PRESENTATION</span>
+              <p class="text-xs text-slate-300 mt-1">Single-dose intravenous infusion vial with serialized DataMatrix code and self-assembling LNP core.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Market Opportunity ($85B) -->
+  <section id="market" class="py-16 px-6 border-t border-slate-800/80 bg-slate-950/40">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="max-w-3xl">
+        <span class="text-cyan-400 text-xs font-mono tracking-wider uppercase font-semibold">01 // Economic Thesis</span>
+        <h2 class="text-3xl font-bold text-white mt-2">The $85 Billion Curative Genomic Transition</h2>
+        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          Over 500,000 patients globally suffer from fatal ATTR amyloidosis. Current lifelong stabilizers cost $225,000 to $450,000 annually per patient. A one-and-done in vivo base-editing cure offers superior clinical outcomes and profound lifetime savings to healthcare systems.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 glass-card rounded-2xl p-6">
+          <div id="geneMarketChart" class="w-full h-80"></div>
+        </div>
+        <div class="lg:col-span-4 space-y-4">
+          <div class="glass-card rounded-xl p-5 border-l-4 border-cyan-500">
+            <h4 class="text-white font-semibold text-sm">Value-Based Curative Model</h4>
+            <p class="text-slate-400 text-xs mt-1">Priced at <span class="text-white font-bold">$2.0M – $2.8M per patient</span>, NEXUS-880 replaces 15+ years of chronic medication costing >$4.5M per patient lifetime.</p>
+          </div>
+          <div class="glass-card rounded-xl p-5 border-l-4 border-sky-500">
+            <h4 class="text-white font-semibold text-sm">Target ATTR Market Capture</h4>
+            <p class="text-slate-400 text-xs mt-1">Reaching 10% of addressable ATTR cardiomyopathy and polyneuropathy patients represents a <span class="text-white font-bold">$10B+ peak sales platform</span>.</p>
+          </div>
+          <div class="glass-card rounded-xl p-5 border-l-4 border-indigo-500">
+            <h4 class="text-white font-semibold text-sm">Non-Viral LNP Scalability</h4>
+            <p class="text-slate-400 text-xs mt-1">Synthesized via microfluidic mixing without expensive, bottlenecked viral vectors (AAVs), allowing low-cost global commercial scaling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Mechanism of Action & Genomic Fidelity -->
+  <section id="mechanism" class="py-16 px-6 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="max-w-3xl">
+        <span class="text-cyan-400 text-xs font-mono tracking-wider uppercase font-semibold">02 // Base-Editing Architecture</span>
+        <h2 class="text-3xl font-bold text-white mt-2">Precision Deamination: Zero Double-Strand DNA Cuts</h2>
+        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          Standard Cas9 nucleases act like molecular scissors, cutting both strands of DNA and risking oncogenic translocations. NEXUS-880 deaminates the template-strand Cytosine (`C•G to T•A`), turning the invariant `GT` splice donor into `AT` to silence toxic protein output with an intact phosphate backbone.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 glass-card rounded-2xl p-6">
+          <div id="fidelityChart" class="w-full h-80"></div>
+        </div>
+        <div class="lg:col-span-4 space-y-4">
+          <div class="glass-card rounded-xl p-5">
+            <span class="text-xs font-mono text-cyan-400">ON-TARGET PENETRANCE // 96.4%</span>
+            <h4 class="text-white font-semibold text-sm mt-1">Near-Complete Silencing</h4>
+            <p class="text-slate-400 text-xs mt-1">Achieves consistent >90% editing across primary human hepatocyte tissue slices.</p>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <span class="text-xs font-mono text-emerald-400">OFF-TARGET SUPPRESSION // 99.8%</span>
+            <h4 class="text-white font-semibold text-sm mt-1">Whole-Genome GUIDE-seq</h4>
+            <p class="text-slate-400 text-xs mt-1">Unbiased genome-wide sequencing detects zero significant off-target indel generation.</p>
+          </div>
+          <div class="glass-card rounded-xl p-5">
+            <span class="text-xs font-mono text-indigo-400">CHROMOSOMAL INTEGRITY // 100%</span>
+            <h4 class="text-white font-semibold text-sm mt-1">Zero Translocation Risk</h4>
+            <p class="text-slate-400 text-xs mt-1">Without double-strand cleavage, cellular repair pathways avoid non-homologous rearrangements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive 3D Cas12a Architecture (3Dmol.js) -->
+  <section id="structure" class="py-16 px-6 border-t border-slate-800/80 bg-slate-950/40">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="max-w-3xl">
+        <span class="text-cyan-400 text-xs font-mono tracking-wider uppercase font-semibold">03 // Structural Biology</span>
+        <h2 class="text-3xl font-bold text-white mt-2">Interactive 3D Cas12a Genomic Complex (PDB: 5XUS)</h2>
+        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+          High-resolution X-ray crystal structure (2.50 Å) of the Cas12a/crRNA genomic complex. The engineered PAM-interacting loop expands targeting access beyond canonical `TTTV` motifs, locking target DNA into the deaminase catalytic cleft.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 glass-card rounded-2xl p-4 overflow-hidden relative">
+          <div id="viewer3dCas" class="w-full h-96 rounded-xl bg-slate-950 cursor-grab active:cursor-grabbing"></div>
+          <div class="absolute bottom-6 left-6 text-xs font-mono bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 pointer-events-none">
+            🖱️ Drag to rotate | Scroll to zoom | 3Dmol.js WebGL (5XUS)
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-3">
+          <div class="glass-card rounded-xl p-4 border-l-4 border-cyan-400">
+            <div class="text-xs font-mono text-cyan-400">RuvC Catalytic Pocket</div>
+            <p class="text-xs text-slate-300 mt-1">Catalytically deactivated (dCas12a) to prevent endonuclease double-strand cleavage.</p>
+          </div>
+          <div class="glass-card rounded-xl p-4 border-l-4 border-sky-400">
+            <div class="text-xs font-mono text-sky-400">Engineered PAM-Interacting (PI) Loop</div>
+            <p class="text-xs text-slate-300 mt-1">Expands targeting flexibility across non-canonical splice junctions in human *TTR*.</p>
+          </div>
+          <div class="glass-card rounded-xl p-4 border-l-4 border-indigo-400">
+            <div class="text-xs font-mono text-indigo-400">crRNA Target Unwinding (R-Loop)</div>
+            <p class="text-xs text-slate-300 mt-1">Exposes the single-stranded non-target DNA strand with sub-angstrom precision for deaminase hydrolysis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: LNP Delivery & Outpatient Experience -->
+  <section id="lnp" class="py-16 px-6 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-cyan-400 text-xs font-mono tracking-wider uppercase font-semibold">04 // Delivery & Patient Experience</span>
+          <h2 class="text-3xl font-bold text-white leading-tight">ApoE-Targeted Lipid Nanoparticles & Single-Infusion Cure</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            NEXUS-880 self-assembles into 75 nm ionizable lipid nanoparticles. Upon systemic intravenous infusion, circulating serum ApoE adsorbs onto the particle surface, triggering receptor-mediated endocytosis via low-density lipoprotein receptors (LDLR) on hepatocytes with >92% hepatic accumulation.
+          </p>
+          <div class="glass-card rounded-xl p-4 border-l-4 border-cyan-400 text-xs text-slate-300">
+            <span class="font-bold text-white">Outpatient Infusion Protocol</span>: Single 60-minute IV drip in an ambulatory infusion suite, replacing decades of chronic injections with permanent genetic disease resolution.
+          </div>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+            <img src="nexusgene_godtier_lifestyle.jpg" alt="Clinical Infusion Lifestyle" class="w-full h-auto object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-slate-800 bg-slate-950 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto space-y-4">
+      <div class="flex items-center justify-center space-x-6 text-slate-400 font-medium">
+        <a href="https://maxcomperatore.github.io/auranucleix/" class="hover:text-cyan-400 transition">Auraglipron (AURA-712 Data Room)</a>
+        <span>&bull;</span>
+        <a href="https://github.com/maxcomperatore/nexusgene" class="hover:text-cyan-400 transition">NexusGene GitHub Repository</a>
+      </div>
+      <p>Nexusedit (NEXUS-880) Preclinical In Vivo Genomic Medicine Data Room</p>
+      <p class="text-[11px] text-slate-600">Released under the MIT License for academic benchmarking and computational biology research. Quantitative pharmacological models and biodistribution projections are derived via in silico molecular modeling and genomic analytics.</p>
+      <p>&copy; 2026 Max Comperatore / NexusGene Research. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Plotly & 3Dmol Scripts -->
+  <script>
+    // 1. Gene Editing Market Growth Chart
+    Plotly.newPlot('geneMarketChart', [
+      {
+        x: ['2024', '2026', '2028', '2030', '2032', '2034'],
+        y: [6.2, 11.5, 21.0, 38.4, 62.0, 85.0],
+        type: 'bar',
+        name: 'In Vivo Editing Market ($B)',
+        marker: { color: '#06b6d4', opacity: 0.85, line: { color: '#22d3ee', width: 1.5 } }
+      },
+      {
+        x: ['2024', '2026', '2028', '2030', '2032', '2034'],
+        y: [6.2, 11.5, 21.0, 38.4, 62.0, 85.0],
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'Curative Adoption',
+        line: { color: '#f43f5e', width: 3 },
+        marker: { color: '#fb7185', size: 8 }
+      }
+    ], {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      margin: { t: 20, r: 20, l: 45, b: 40 },
+      yaxis: { title: 'USD Billions ($B)', color: '#94a3b8', gridcolor: '#1e293b' },
+      xaxis: { color: '#94a3b8', gridcolor: '#1e293b' },
+      legend: { font: { color: '#cbd5e1' }, orientation: 'h', y: 1.15 }
+    }, { responsive: true, displayModeBar: false });
+
+    // 2. Genomic Editing Fidelity Comparison
+    const fidelityMetrics = ['On-Target Rate', 'Off-Target Suppression', 'Bystander Precision', 'LNP Liver Uptake', 'Chromosomal Safety'];
+    Plotly.newPlot('fidelityChart', [
+      {
+        x: fidelityMetrics,
+        y: [96.4, 99.8, 94.2, 91.5, 99.9],
+        type: 'bar',
+        name: 'NEXUS-880 (Base Editor)',
+        marker: { color: '#06b6d4', line: { color: '#22d3ee', width: 1.5 } }
+      },
+      {
+        x: fidelityMetrics,
+        y: [72.0, 81.5, 58.0, 78.0, 62.0],
+        type: 'bar',
+        name: 'Legacy Cas9 (Double-Strand Cut)',
+        marker: { color: '#f43f5e', line: { color: '#e11d48', width: 1.5 } }
+      }
+    ], {
+      barmode: 'group',
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      margin: { t: 20, r: 20, l: 45, b: 40 },
+      yaxis: { title: 'Fidelity Percentage (%)', range: [0, 115], color: '#94a3b8', gridcolor: '#1e293b' },
+      xaxis: { color: '#94a3b8', gridcolor: '#1e293b' },
+      legend: { font: { color: '#cbd5e1' }, orientation: 'h', y: 1.15 }
+    }, { responsive: true, displayModeBar: false });
+
+    // 3. Live 3D Molecular WebGL Viewer for Cas12a (5XUS)
+    document.addEventListener("DOMContentLoaded", function () {
+      let element = document.getElementById('viewer3dCas');
+      let config = { backgroundColor: '#090d16' };
+      let viewer = $3Dmol.createViewer(element, config);
+
+      fetch('5XUS.cif')
+        .then(response => response.text())
+        .then(data => {
+          viewer.addModel(data, "cif");
+          viewer.setStyle({}, { cartoon: { colorscheme: 'plasma' } });
+          viewer.zoomTo();
+          viewer.render();
+          viewer.spin("y", 0.6);
+        })
+        .catch(err => {
+          console.log("3D Viewer standby mode", err);
+        });
+    });
+  </script>
+</body>
+</html>
