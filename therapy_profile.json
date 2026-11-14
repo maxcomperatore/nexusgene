@@ -1,0 +1,17 @@
+{
+  "therapy_id": "NEXUS-880",
+  "commercial_name": "Nexusedit (NEXUS-880)",
+  "modality": "In Vivo Deaminated Base-Editing Ribonucleoprotein LNP (Non-Viral)",
+  "target_gene": "Transthyretin (TTR, ENSG00000118271)",
+  "target_disease": "Hereditary & Wild-Type Transthyretin Amyloidosis (ATTR-CM & ATTR-PN)",
+  "editing_mechanism": "Adenine/Cytidine Deaminase fused to Engineered dCas12a (No Double-Stranded DNA Breaks)",
+  "delivery_system": "ApoE-Targeted Lipid Nanoparticle (LNP) with Ionizable Amino-Lipid Core",
+  "route_of_administration": "Single-Dose Intravenous Infusion (1-Hour Inpatient)",
+  "preclinical_target_criteria": {
+    "target_on_target_editing_rate": "> 90% in primary human hepatocytes",
+    "target_off_target_indel_rate": "< 0.1% across whole-genome GUIDE-seq / Digenome-seq",
+    "target_circulating_serum_ttr_reduction": "> 95% sustained suppression post-single-infusion",
+    "chromosomal_translocation_risk": "Undetectable (Zero Double-Stranded DNA Cleavage)"
+  },
+  "cryo_em_structure_reference": "PDB: 5XUS (Engineered Cas12a Genomic Complex)"
+}

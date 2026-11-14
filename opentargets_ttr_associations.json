@@ -1,0 +1,85 @@
+{
+  "data": {
+    "target": {
+      "id": "ENSG00000118271",
+      "approvedSymbol": "TTR",
+      "approvedName": "transthyretin",
+      "biotype": "protein_coding",
+      "geneticConstraint": [
+        {
+          "constraintType": "syn",
+          "score": -0.23362000286579132
+        },
+        {
+          "constraintType": "mis",
+          "score": 1.5822999477386475
+        },
+        {
+          "constraintType": "lof",
+          "score": 0.024546999484300613
+        }
+      ],
+      "associatedDiseases": {
+        "count": 1537,
+        "rows": [
+          {
+            "disease": {
+              "id": "MONDO_0971004",
+              "name": "amyloidosis, hereditary systemic 1"
+            },
+            "score": 0.8464418617235102
+          },
+          {
+            "disease": {
+              "id": "EFO_0700065",
+              "name": "hereditary ATTR amyloidosis"
+            },
+            "score": 0.8093589570722698
+          },
+          {
+            "disease": {
+              "id": "MONDO_0004994",
+              "name": "cardiomyopathy"
+            },
+            "score": 0.7330717639841426
+          },
+          {
+            "disease": {
+              "id": "MONDO_0020730",
+              "name": "carpal tunnel syndrome 1"
+            },
+            "score": 0.7164854506787531
+          },
+          {
+            "disease": {
+              "id": "MONDO_0019065",
+              "name": "amyloidosis"
+            },
+            "score": 0.713514468411492
+          },
+          {
+            "disease": {
+              "id": "MONDO_0018634",
+              "name": "hereditary amyloidosis"
+            },
+            "score": 0.6905664728413609
+          },
+          {
+            "disease": {
+              "id": "MONDO_0019438",
+              "name": "AL amyloidosis"
+            },
+            "score": 0.6447382791765327
+          },
+          {
+            "disease": {
+              "id": "MONDO_0001824",
+              "name": "polyneuropathy"
+            },
+            "score": 0.5799329994100415
+          }
+        ]
+      }
+    }
+  }
+}
